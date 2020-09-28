@@ -1,10 +1,9 @@
 #################################################################
 # Dockerfile for Zimbra Ubuntu
-# Based on Ubuntu 18.04
-# Created by Ahmad Imanudin
+# Based on Ubuntu 18.04 LTS
 #################################################################
 FROM ubuntu:18.04
-MAINTAINER Ahmad Imanudin <ahmad@imanudin.com>
+MAINTAINER Karyanto Danutirto <karyanto.danutirto@ditscloud.com>
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -34,12 +33,12 @@ RUN echo 'export LC_ALL="en_US.UTF-8"' >> /root/.bashrc
 RUN locale-gen en_US.UTF-8
 
 # Download dns-auto.sh
-RUN curl -k https://raw.githubusercontent.com/imanudin11/zimbra-docker/master/dns-auto.sh > /srv/dns-auto.sh
+RUN curl -k https://raw.githubusercontent.com/karyantodanutirto/docker-zimbra/master/dns-auto.sh > /srv/dns-auto.sh
 RUN chmod +x /srv/dns-auto.sh
 
 # Copy rsyslog services
 RUN mv /etc/init.d/rsyslog /tmp/
-RUN curl -k https://raw.githubusercontent.com/imanudin11/zimbra-docker/master/rsyslog > /etc/init.d/rsyslog
+RUN curl -k https://raw.githubusercontent.com/karyantodanutirto/docker-zimbra/master/rsyslog > /etc/init.d/rsyslog
 RUN chmod +x /etc/init.d/rsyslog
 
 # Crontab for rsyslog
